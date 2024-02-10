@@ -1,0 +1,233 @@
+ console.log("1st console :"+data);
+        console.log("Data type : " + typeof(data));
+        console.log("Data entries for row 0"+ data);
+ //       extractedData.push(data);
+ //       console.log("Extracted Data type : "+typeof(extractedData));
+        if (Array.isArray(data)) {
+            data.forEach(function(d) {
+                console.log(typeof(d));
+                var entry = {
+                    worldBankRegion: d["World bank region"] || 'N/A',
+                    country: d["Country"] || 'N/A',
+                    year: +d["Year"] ? +d['Year'] : 0,
+                };
+                extractedData.push(entry);
+   //             console.log(extractedData);
+            });
+        } else {
+            // Handle the case where data is not an array
+            console.error('data is not an array or is undefined/null');
+        }
+
+
+
+// // Function to create the beeswarm chart
+// function createBeeswarmChart(data) {
+//     const attributes = [
+//         "Data.Health.Birth Rate",
+//         "Data.Health.Death Rate",
+//         "Data.Health.Fertility Rate",
+//         "Data.Health.Life Expectancy at Birth Female",
+//         "Data.Health.Life Expectancy at Birth Male",
+//         "Data.Health.Life Expectancy at Birth Total",
+//         "Data.Health.Population Growth",
+//         "Data.Health.Total Population",
+//         "Data.Rural Development.Agricultural Land",
+//         "Data.Rural Development.Agricultural Land Percent"
+//     ];
+
+//     // Define dimensions and margins for the chart.
+//     const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+//     const width = 800 - margin.left - margin.right;
+//     const height = 400 - margin.top - margin.bottom;
+
+//     // Create a SVG element for the chart.
+//     const svg = d3.select("#chart-container")
+//         .append("svg")
+//         .attr("width", width + margin.left + margin.right)
+//         .attr("height", height + margin.top + margin.bottom)
+//         .append("g")
+//         .attr("transform", `translate(${margin.left},${margin.top})`);
+
+//     // Extract the "Year" and "World Bank Region" columns.
+//     const xData = data.map(d => +d.Year);
+//     const yData = data.map(d => d["World bank region"]);
+
+//     // Create scales for x and y axes.
+//     const xScale = d3.scaleLinear()
+//         .domain([d3.min(xData), d3.max(xData)])
+//         .range([0, width]);
+
+//     const yScale = d3.scalePoint()
+//         .domain([...new Set(yData)])
+//         .range([0, height]);
+
+//     // Create a color scale for attributes.
+//     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+//     // Create circles for the beeswarm chart.
+//     svg.selectAll("circle")
+//         .data(data)
+//         .enter()
+//         .append("circle")
+//         .attr("cx", d => xScale(+d.Year))
+//         .attr("cy", d => yScale(d["World bank region"]))
+//         .attr("r", 5)
+//         .attr("fill", d => colorScale(attributes.indexOf(d3.keys(d)[1])));
+
+//     // Create x and y axes.
+//     const xAxis = d3.axisBottom(xScale);
+//     const yAxis = d3.axisLeft(yScale);
+
+//     svg.append("g")
+//         .attr("class", "x-axis")
+//         .attr("transform", `translate(0, ${height})`)
+//         .call(xAxis);
+
+//     svg.append("g")
+//         .attr("class", "y-axis")
+//         .call(yAxis);
+// }
+
+function updateChart(data){
+
+    const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    const svg = d3.select('#chart-container').append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+    svg.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", data[returnValue(data)][xAxisAttribute]) // X position (random for swarm effect)
+ //       .attr("cy", 200) // Y position (constant in this example)
+        .attr("r", data[returnValue(data)][sizeAttribute]) // Radius of each bee
+        .attr("fill", "orange"); // Bee color
+
+    // Create scales for x and circle size
+    const xScale = d3.scaleLinear()
+        .domain([0, findHighestValue(data)])
+        .range([0, width]);
+
+    const sizeScale = d3.scaleLinear()
+        .domain([0, findHighestValue(data)])
+        .range([5, 20]);
+
+    // Define a force simulation for the beeswarm
+    const simulation = d3.forceSimulation(data)
+        .force("x", d3.forceX(d => xScale(d[xAxisAttribute])).strength(1))
+        .force("y", d3.forceY(height / 2))
+        .force("collide", d3.forceCollide(d => sizeScale(d[sizeAttribute]) / 2 + 2))
+        .stop();
+
+    // Handle user interaction for dropdowns
+    document.getElementById('xAxisDropdown').addEventListener('change', function () {
+        xAxisAttribute = this.value;
+        updateChart();
+    });
+
+    document.getElementById('sizeDropdown').addEventListener('change', function () {
+        sizeAttribute = this.value;
+        updateChart();
+    });
+
+    // Handle user interaction for year input
+    const yearInput = d3.select('#yearInput');
+    yearInput.on('input', () => {
+        selectedYear = +yearInput.node().value;
+        updateChart();
+    });
+
+    // Handle animation button click
+    const animationButton = d3.select('#animationButton');
+    animationButton.on('click', () => {
+        if (isAnimating) {
+            isAnimating = false;
+            animationButton.text('Play');
+        } else {
+            isAnimating = true;
+            animationButton.text('Pause');
+            animateYears();
+        }
+    });
+
+}
+
+// function updateChart(data) {
+
+//     const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+//     const width = 800 - margin.left - margin.right;
+//     const height = 400 - margin.top - margin.bottom;
+
+//     // Read selected values from the dropdowns and input
+//     // const selectedXAxis = d3.select("#xAxisDropdown").property("value");
+//     // const selectedSize = d3.select('#sizeDropdown').property('value');
+//     // const selectedRegions = [...d3.select('#worldRegion_dropdown').property('selectedOptions')].map(option => option.value);
+//     // const selectedYear = +d3.select('#year').property('value');
+
+//     const selectedXAxis = xAxisAttribute;
+//     const selectedSize = sizeAttribute;
+//     const selectedRegions = region;
+//     const selectedYear1 = selectedYear;
+
+//     // console.log("Line 359 : "+selectedXAxis +""+selectedSize+""+ selectedRegions+""+selectedYear1);
+//     console.log("Line 365 : "+xAxisAttribute +""+sizeAttribute+""+ region+""+selectedYear);
+//     // Filter the data based on selected options
+//     const filteredData = data.filter(d => selectedRegions.includes(d['World bank region']) && d['Year'] === selectedYear);
+
+//     // Create and update your beeswarm chart using D3.js
+//     // You will need to implement the logic for the chart based on your data and requirements here.
+//     // Refer to D3.js documentation for creating beeswarm charts.
+
+//     // Example: Create a simple SVG for the chart
+//     const svg = d3.select('#chart-container').append('svg')
+//         .attr('width', width)
+//         .attr('height', height);
+
+//     // Example: Create circles representing data points
+//     svg.selectAll('circle')
+//         .data(filteredData)
+//         .enter()
+//         .append('circle')
+//         .attr('cx', d => xScale(d[xAxisAttribute]))
+//   //      .attr('cy', d => yScale(d[sizeAttribute]))
+//         .attr('r', d => sizeScale(d[sizeAttribute]))
+//         .attr('fill', 'blue');
+// }
+    
+
+        // var filteredDataX = filteredData.map(d => ({ [xColumn]: d[xColumn] }));
+        // var filteredDataS = filteredData.map(d => ({ [sizeColumn]: d[sizeColumn] }));
+
+        // const resultDataset = [...filteredDataS, ...filteredDataX].map(item => {
+        //     const newItem = {};
+        //     if (filteredData[0].hasOwnProperty("region")) newItem.region = filteredData[0].region;
+        //     if (filteredData[0].hasOwnProperty("country")) newItem.country = filteredData[0].country;
+        //     if (filteredData[0].hasOwnProperty("year")) newItem.year = filteredData[0].year;
+        //     return { ...newItem, ...item };
+        // });
+
+        // var resultDataSet=[];
+        // for (var i = 0; i < 5; i++) {
+        //     // Clone the input datasets and add them to the result dataset
+        //     var newItem = { ...filteredDataO, ...filteredDataS, ...filteredDataX };
+        //     resultDataSet.push(newItem);
+        // }
+
+        // var resultDataSet = filteredData.map(function (d, i) {
+        //     var xData = filteredDataX[i];
+        //     var sData = filteredDataS[i];
+        //     var oData = filteredDataO[i];
+        
+        //     // Merge the data from filteredData, filteredDataX, and filteredDataS
+        //     var mergedData = Object.assign({}, d, xData, sData, oData);
+        //     return mergedData;});
+
+                // console.log("filteredDataO");
+        // console.log(filteredDataO);
+        // console.log(filteredDataX);
+        // console.log(filteredDataS);

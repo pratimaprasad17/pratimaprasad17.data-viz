@@ -1,0 +1,379 @@
+/* Style the custom dropdown */
+/* .custom-dropdown {
+    position: relative;
+    display: inline-block;
+} */
+
+.myContainer{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* height: auto; */
+}
+
+.myHeader{
+    height:10%
+}
+
+.main-column {
+    width: 100%;
+    display: flex;
+    height: 850px;
+}
+
+.sub-column-1 {
+    width: 75%;
+    height: auto;
+    display: inline-block;
+    padding: 0 1px 0 1px;
+    font-size: 16px;
+    font-weight: bolder;
+    border-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* max-height: 100%; */
+    overflow: visible;
+}
+
+.sub-column-2 {
+    width: 25%;
+    height: 800px;
+    display: inline-block;
+    padding: 0 1px 0 1px;
+    font-size: 16px;
+    font-weight: bolder;
+    border-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* max-height: 100%; */
+}
+
+.chart-legend-key{
+    border: 2px solid #343a40; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+    /*background-color: #f8f9fa;  Light background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Small shadow */
+    padding: 5px;
+    /* background-color: #F0F8FF; */
+
+}
+
+#key-container{
+    float: right;
+    width: 200px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+    /* margin: 0 auto; */
+}
+
+.sizeRange{
+    display: block;
+    text-align: center;
+    width: 95%;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    background-color:#980046;
+}
+
+.key{
+    display: block;
+    font-weight: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    background-color: #980046;
+    padding-bottom: 2px 0 10px 0;
+}
+
+.chart_container{
+    padding: 100px;
+}
+
+.beeswamp-svg{
+    width: 1500px;
+} 
+
+.chart-container{
+    border: 2px solid #343a40; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+    /*background-color: #f8f9fa;  Light background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Small shadow */
+    padding: 15px;
+    background-color: #F0F8FF;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 999;
+}
+
+.control-group{
+    border-style: outset;
+    padding: 2px;
+    background-color: #ACC8E5;
+    margin-bottom: 10px;
+}
+
+.control-panel{
+    border: 2px solid #343a40; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+    /*background-color: #f8f9fa;  Light background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Small shadow */
+    /* padding: 15px; */
+    background-color: #F0F8FF;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.label-container{
+    border-bottom: 5px solid black;
+    border-bottom-width: 100%;
+}
+.dropdown-label, .region-label, .year-label, .countries-label{
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    font-stretch: ultra-expanded;
+    color: #112A46;
+}
+
+.sub-title{
+    font-weight: lighter;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 13px;
+    font-stretch: ultra-expanded;
+    color: #112A46;
+}
+
+.input-year{
+    font-family: cursive;
+    font-weight: bold;
+    width: 100%;
+    font-size: 14px;
+}
+
+.select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    color: #3498db;
+}
+/* .select-box {
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.option input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* .selected-options {
+    margin-top: 10px;
+    font-weight: bold;
+} */
+
+/* .sizeDropdown, .xAxisDropdown option {
+    background-color: #fff;
+    color: #e3e3e3;
+
+}  */
+
+/* .sizeDropdown, .xAxisDropdown{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #e3e3e3;
+    font-size: 16px;
+    outline: none;
+} */
+
+/* .sizeDropdown, .xAxisDropdown {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+} */
+
+
+.multiSelect-dropdown-1{
+    width: 100%;
+    font-family: cursive;
+    font-weight: normal;
+    font-size: medium;
+    font-style: oblique;
+    stop-color: black;
+    height: 170px;
+    /* max-height: 200px; /* Adjust the maximum height as needed 
+    overflow-y: auto; */
+}
+/* 
+.regions-checkboxes {
+    position: relative;
+}
+
+.regions-checkboxes select {
+    display: none;
+}
+
+.regions-checkboxes::after {
+    content: '\25BC';  Down arrow character 
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.regions-checkboxes select:focus + ::after {
+    background-color: blue;
+    color: white;
+}
+
+.regions-checkboxes select option:checked {
+    background-color: blue;
+    color: white;
+} */
+
+.multiSelect-dropdown-2{
+    width: 100%;
+    font-family: cursive;
+    font-weight: normal;
+    font-size: medium;
+    font-style: oblique;
+    stop-color: black;
+    height: 113px;
+    /* max-height: 200px; /* Adjust the maximum height as needed 
+    overflow-y: auto; */
+}
+
+.dropdown {
+    width: 100%;
+    font-family: cursive;
+    font-weight: normal;
+    font-size: medium;
+    font-style: oblique;
+    stop-color: black;
+}
+
+/* .button-container{
+    width: 100%;
+    display: flex;
+} */
+
+/* .button{
+    flex: 1;
+    height: 30px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bolder;
+    border-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.button + .button {
+    margin-left: 3px;
+} */
+
+/* .submit-container{
+    width: auto;
+    padding-top: 3px;
+    display: flex;
+}
+
+.submit{
+    padding: 0;
+    font-size: 18px;
+    font-weight: bolder;
+    border-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+} */
+.control-group-play-button{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button{
+    display: inline-block;
+    width: 150px;
+    height: 70px;
+    background-color: #3498db; /* Blue background color */
+    border: none;
+    border-radius: 50%; /* Makes it a circle */
+    color: #fff; /* White text color */
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    line-height: 60px; /* Vertically center the text */
+    text-align: center;
+    cursor: pointer;
+}
+
+#worldRegion_dropdown {
+    margin: 5px;
+    background-color: white;
+}
+
+.worldRegion_dropdown {
+    margin: 5px;
+}
+
+label {
+    margin-left: 5px;
+}
+
+input[type="button"] {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: #CCC;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#select_all, #deselect_all {
+    flex: 1;
+    height: 30px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bolder;
+    border-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#select_all {
+    margin-right: 1px; /* Adjust the spacing as needed */
+}
+/*
+.multiSelect-dropdown{
+    height: 165px;
+}
+.multiSelect-dropdown option:checked{
+    background-color: aqua;
+    font-weight: bold;
+    scrollbar-highlight-color: grey;
+} */

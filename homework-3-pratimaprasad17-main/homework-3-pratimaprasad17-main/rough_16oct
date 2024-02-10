@@ -1,0 +1,255 @@
+  function chartOnLoad(){
+
+        // Step 1: Filter data based on dropdown_3 selections
+        // Step 2: Determine the x-axis and circle size columns based on x-axis and size attribute selections
+        var selectedRegions = Array.from(document.getElementById("worldRegion_dropdown").selectedOptions).map(option => option.value);
+        var xColumn = document.getElementById("xAxisDropdown").value;
+        var xColumnText = document.getElementById("xAxisDropdown").options[document.getElementById("xAxisDropdown").selectedIndex].text;
+     //   console.log("xColumnText"+xColumnText);
+        var sizeColumn = document.getElementById("sizeDropdown").value;
+        var sizeColumnText = document.getElementById("sizeDropdown").options[document.getElementById("sizeDropdown").selectedIndex].text;
+        var selectedCountries = Array.from(document.getElementById("countries_dropdown").selectedOptions).map(option => option.value);
+        var selectedyear = parseInt(document.getElementById("yearInput").value);
+    
+        console.log("selectedRegions : "+selectedRegions);
+    //    console.log("selectedCountries : "+selectedCountries);
+        console.log("xColumn : "+xColumn);
+        console.log("sizeColumn : "+sizeColumn); 
+        console.log("selectedyear : "+selectedyear);       
+        console.log(typeof(data[0]["year"]));
+
+        var filteredData = data.filter(d => selectedRegions.includes(d["region"]) &&
+            selectedCountries.includes(d["country"]) &&
+            d.year===selectedyear
+        );
+
+        var resultDataSet = filteredData.map(function (item) {
+            return { region: item.region, country: item.country, year: item.year, [xColumn]: item[xColumn], [sizeColumn]: item[sizeColumn], imgURL: item.imgURL};
+        });
+
+        console.log(resultDataSet);
+        console.log(resultDataSet[0][xColumn]);
+
+        // Define your SVG dimensions
+        const margin = { top: 10, right: 20, bottom: 10, left: 20 };
+        var width = document.getElementById("myContainer").offsetWidth - margin.left - margin.right;
+        var height = 800;
+
+        d3.select("#beeswamp-svg").selectAll("*").remove();
+    //    circles.exit().remove();
+
+        // Create an SVG element for beeswamp chart
+        var svg = d3.select("#beeswamp-svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
+
+        // Define x-axis scale based on xColumn
+        var xScale = d3.scaleLinear()
+            .domain([d3.min(resultDataSet, d => d[xColumn]), d3.max(resultDataSet, d => d[xColumn])])
+            .range([margin.left, width - margin.right])
+            ;
+
+        // Define circle size scale based on sizeColumn
+        var sizeScale = d3.scaleSqrt()
+            .domain([0, d3.max(resultDataSet, d => d[sizeColumn])])
+            .range([2, 20])
+            ;
+
+        const yScale = d3.scaleBand()
+            .domain(resultDataSet.map(d => d.region))
+            .range([0, height])
+            .padding(0.1);
+
+        const regionColors = d3.scaleOrdinal()
+            .domain(["North America", "Sub-Saharan Africa", "East Asia & Pacific", "South Asia", "Latin America & Caribbean", "Middle East & North Africa", "Europe & Central Asia"])
+            .range(["#2596be", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#ff7f0e"]);
+
+        // Create the circles for the beeswarm chart
+        
+         // Set up a force simulation for the beeswarm layout
+         var simulation = d3.forceSimulation(resultDataSet)
+            .force("x", d3.forceX(d => xScale(d[xColumn])).strength(1)) // Adjust the strength
+            .force("y", d3.forceY(d => yScale(d.region)).strength(1))
+            .force("collide", d3.forceCollide(d => sizeScale(d[sizeColumn]) + 2).iterations(5)) // Adjust collision parameters
+            .stop();
+
+        // Run the simulation
+        for (let i = 0; i < 120; ++i) {simulation.tick();};
+
+        var circles = svg.selectAll("circle")
+            .data(resultDataSet)
+            .enter()
+            .append("circle")
+            .attr("class", "circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y) // Adjust the y-position as needed
+            .attr("r", (d, i) => sizeScale(resultDataSet[i][sizeColumn]))
+            .style("fill", d => regionColors(d.region))
+            .style("stroke", "black")  // Add a black border
+            .style("stroke-width", "1px")  // 1px border width;
+            .on("mouseover", onMouseOver)
+            .on("mousemove", onMouseMove)
+            .on("mouseout", onMouseOut);
+    
+        // Create axis
+        svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", "translate(0," + (height - 20) + ")") // Adjust the position of the x-axis
+            .call(d3.axisBottom(xScale));
+
+        svg.append("g")
+            .attr("class", "y-axis")
+            .attr("transform", "translate(0," + (width - 20) + ")")
+            .call(d3.axisLeft(yScale));
+
+       //~~~~~~~~~~~ Create a legend ~~~~~~~~~~~
+
+       // Create an element for legend
+       
+        const legend = d3.select("#legend")
+            .attr("width", width) // Adjust the width as needed
+            .attr("height", 50); // Adjust the height as needed
+
+        var regionLegend =[];
+        regionLegend = Array.from(new Set(resultDataSet.map(d => d.region)));
+        
+        // const legendItem = legend.selectAll(".legend-item")
+        //     .data(regionLegend)
+        //     .enter()
+        //     .append("g")
+        //     .attr("class", "legend-item")
+        //     .attr("transform", (d, i) => "translate(0," + (i * 20) + ")");
+
+        // legendItem.append("rect")
+        //     .attr("width", 10)
+        //     .attr("height", 10)
+        //     .style("fill", d => regionColors(d));
+
+        // legendItem.append("text")
+        //     .attr("x", 15)
+        //     .attr("y", 9)
+        //     .text(d => d);
+
+        ///////////////////////////////////////////////////////////////////
+
+        // const legendItem = legend.selectAll(".legend-item")
+        //     .data(regionLegend)
+        //     .enter()
+        //     .append("g")
+        //     .attr("class", "legend-item")
+        //     .attr("transform", (d, i) => {
+        //         let x = 0;
+        //         if (i > 0) {
+        //             const prevLegend = legendItem.nodes()[i - 1];
+        //             const prevLegendText = prevLegend.querySelector("text");
+        //             const prevLegendWidth = prevLegend.getBBox().width;
+        //             x = prevLegend.getBBox().x + prevLegendWidth + 10; // Adjust the spacing between legend items
+        //         }
+        //         return "translate(" + x + ",0)";
+        //     });
+
+        // legendItem.append("rect")
+        //     .attr("width", 10)
+        //     .attr("height", 10)
+        //     .style("fill", d => regionColors(d));
+
+        // legendItem.append("text")
+        //     .attr("x", 15)
+        //     .attr("y", 9)
+        //     .text(d => d);
+
+        ////////////////////////////////////////////////////////
+
+        // const legendItem = legend.selectAll(".legend-item")
+        //     .data(regionLegend)
+        //     .enter()
+        //     .append("legend")
+        //     .attr("class", "legend-item")
+        //     .attr("transform", (d, i) => {
+        //         let x = 0;
+        //         if (i > 0) {
+        //             const prevLegend = legendItem.nodes()[i - 1];
+        //             const prevLegendText = prevLegend.querySelector("text");
+        //             const prevLegendWidth = prevLegend.getBBox().width;
+        //             x = prevLegend.getBBox().x + prevLegendWidth + 20; // Adjust the spacing between legend items
+        //         }
+        //         return "translate(" + x + ",0)";
+        //     });
+
+        // legend.selectAll("rect")
+        //     .data(regionLegend)
+        //     .enter()
+        //     .append("rect")
+        //     .attr("x", (d, i) => i * 20)
+        //     .attr("y", 0)
+        //     .attr("width", 10)
+        //     .attr("height", 10)
+        //     .style("fill", d => regionColors(d));
+        
+        // legend.selectAll("text")
+        //     .data(regionLegend)
+        //     .enter()
+        //     .append("text")
+        //     .attr("x", (d, i) => i * 20 + 9)
+        //     .attr("y", 15) // Adjust the vertical position of the labels
+        //     .text(d => d);
+
+        ///////////////////////////////////////////////////////////////////////////
+        const spacing = 20; // Adjust the spacing between legend items
+        const itemHeight = 15; // Height of each legend item
+        let totalWidth =0;
+        const legendItems = legend
+            .selectAll("g")
+            .data(regionLegend)
+            .enter()
+            .append("g")
+            .attr("transform", (d, i) => `translate(${i * spacing}, 0)`)
+            ;
+
+        legendItems
+            .append("rect")
+            .attr("width", 10)
+            .attr("height", itemHeight/1.3)
+            .style("fill", d => regionColors(d));
+
+        legendItems
+            .append("text")
+            .attr("x", 15)
+            .attr("y", itemHeight/1.3)
+            .text(d => d);
+
+        legendItems.each(function () {
+            const legendItem = d3.select(this);
+            const rectWidth = legendItem.select("rect").node().getBBox().width;
+            const textWidth = legendItem.select("text").node().getBBox().width;
+            totalWidth = (rectWidth + textWidth);
+
+            legendItem.attr("transform", (d, i) => `translate(${i * (totalWidth + spacing)}, 0)`);
+        });
+
+        // ~~~~~~~~~~~~~~~~~~~~ For tooltip ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        const tooltip = d3.select("#tooltip")
+            .append("tooltip")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+        
+        function onMouseOver(event, d) {
+            tooltip.style("opacity", 1)
+                .style("display", "block")
+                .style("left", (event.pageX) + "px")
+                .style("top", (event.pageY) + "px")
+                .html(`<strong>${d.country}</strong> <img src="${d.imgURL}" style="width: 50px;"></br> ${xColumnText} : ${d[xColumn]}</br>${sizeColumnText} : ${d[sizeColumn]}`)
+                .style("z-index", "999");
+        }
+    
+        function onMouseMove(event, d){
+            tooltip.style("display", "block").style("left", (event.pageX) + "px")
+                .style("top", (event.pageY) + "px")
+        }
+    
+        function onMouseOut(){
+            tooltip.style("opacity", 0)
+                .style("display", "none");
+        }       
+    }
