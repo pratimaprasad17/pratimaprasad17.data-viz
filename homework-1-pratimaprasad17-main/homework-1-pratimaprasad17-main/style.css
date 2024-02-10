@@ -1,0 +1,26 @@
+.selectDropdown{
+    width: 100%;
+}
+.x-label{
+    font-weight: 500;
+}
+
+.y-label{
+    font-weight: 500;
+}
+
+.legend{
+    font-weight:500;
+}
+
+.selectDropdown{
+    font-weight:500;
+}
+
+.y-axis{
+    font-size: 12px;
+}
+
+.x-axis{
+    font-size: 12px;
+}
