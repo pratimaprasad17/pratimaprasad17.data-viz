@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 32 32"
+   id="svg5"
+   version="1.1"
+   sodipodi:docname="power.svg"
+   inkscape:version="1.3.1 (91b66b0, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.27560601"
+     inkscape:cx="259.42831"
+     inkscape:cy="547.88355"
+     inkscape:window-width="1712"
+     inkscape:window-height="1041"
+     inkscape:window-x="0"
+     inkscape:window-y="66"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg5" />
+  <defs
+     id="defs2" />
+  <g
+     id="layer1"
+     transform="matrix(1,0,0,1.1244012,-156.29027,-114.28541)">
+    <path
+       d="m 167,105 c -1.6447,0 -3,1.3553 -3,3 v 19 c 0,1.6447 1.3553,3 3,3 h 10 c 1.6447,0 3,-1.3553 3,-3 v -19 c 0,-1.6447 -1.3553,-3 -3,-3 z m 0,2 h 10 c 0.5713,0 1,0.4287 1,1 v 19 c 0,0.5713 -0.4287,1 -1,1 h -10 c -0.5713,0 -1,-0.4287 -1,-1 v -19 c 0,-0.5713 0.4287,-1 1,-1 z"
+       id="rect16694"
+       style="color:#000000;fill:#000000;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none" />
+    <path
+       d="m 172.31641,110.55078 a 1,1 0 0 0 -1.26563,0.63281 l -2,6 A 1.0001,1.0001 0 0 0 170,118.5 h 2.61133 l -1.56055,4.68359 a 1,1 0 0 0 0.63281,1.26563 1,1 0 0 0 1.26563,-0.63281 l 2,-6 A 1.0001,1.0001 0 0 0 174,116.5 h -2.61133 l 1.56055,-4.68359 a 1,1 0 0 0 -0.63281,-1.26563 z"
+       id="path17422"
+       style="color:#000000;fill:#000000;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none" />
+    <path
+       d="m 169,102 c -1.0907,0 -2,0.9093 -2,2 v 1 c 0,1.0907 0.9093,2 2,2 h 6 c 1.0907,0 2,-0.9093 2,-2 v -1 c 0,-1.0907 -0.9093,-2 -2,-2 z m 0,2 h 6 v 1 h -6 z"
+       id="rect18168"
+       style="color:#000000;fill:#000000;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none" />
+  </g>
+</svg>

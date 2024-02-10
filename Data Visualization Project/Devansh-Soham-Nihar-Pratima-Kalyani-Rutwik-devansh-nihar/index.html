@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/main.js"></script>
+    <title>Disaster at St. Himark!</title>
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+    <!-- jQuery (Slim build) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Disaster at St. Himark!</h1>
+    </header>
+
+    <section>
+        <div class="container">
+           
+                <!-- <div class="card position"> -->
+                    <!-- Time slider and dropdown go here -->
+                    <div class="row-dateTime-container">
+                        <div></div>
+                        <div></div>
+                        <div class="widget-container">
+                            <label for="dateInput1" class="widget-label-group">Start Date</label>
+                            <br>
+                            <input type="date" id="dateInput1" class="dateInput" min="2020-04-06" max="2020-04-11" value = "2020-04-06" required>  
+                        </div>
+                        <div class="widget-container">
+                            <label for="hourInput1"class="widget-label-group">Start Time</label>
+                            <br>
+                            <input type="time" id="hourInput1" class="hourInput" step="3600" value="00:00"   required>    
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <div class="widget-container">
+                            <label for="dateInput2" class="widget-label-group">End Date</label>
+                            <br>
+                            <input type="date" id="dateInput2" class="dateInput" min="2020-04-06" max="2020-04-11"  value = "2020-04-11" required>    
+                        </div>
+                        <div class="widget-container">
+                            <label for="hourInput2" class="widget-label-group">End Time</label>
+                            <br>
+                            <input type="time" id="hourInput2" class="hourInput" step="3600" value="23:00"  required>
+                        </div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                <!-- </div> -->
+           
+
+            <div class="row">
+                <div class="card" id="choro_div">
+                    <h2>Choropleth Map</h2>
+                    <svg id="my_dataviz" width="600" height="500"></svg>
+        
+                    <select id="myDropdown">
+                          <!-- <option value="SelectOption">Select Utility</option> -->
+                        <option value="impact">Overall Impact</option>
+                        <option value="buildings">Building</option>
+                        <option value="medical">Medical</option>
+                        <option value="power">Power</option>
+                        <option value="roads_and_bridges">Roads & Bridges</option>
+                        <option value="sewer_and_water">Sewer & Water</option>
+                        
+                    </select>
+                    <div id="chorotooltip" class="tooltip">
+                        <strong id="tooltip-title"></strong> <br>
+                        <strong id="tooltip-x"></strong> <br>
+                    </div>
+                    <div id="button-choro">
+                        <button class="button-choro" id="clearAll_button" style="display: none;">Deselect All</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Bar</h2>
+                    <span id="BarInstruct" style="text-align: center; font-style: italic; display:block">(Select a Location on Choropleth map to display this chart)</span>
+                    <svg id="chart-bar"></svg>
+                    <div id="tooltip" class="tooltip">
+                        <strong id="tooltip-title"></strong> <br>
+                        <strong id="tooltip-x"></strong> <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card">
+                    <div id="violin_header_container">
+                        <div id="violin_header_right">
+                            <button class="button" id="return_button" style="display: none;">Return</button>
+                        </div>
+                        <div id="violin_header_left">
+                            <h2>Violin</h2>
+                            <p style="text-align: center; font-weight: bold;"> <span id="violinInstruct">Distribution of damage across locations</span></p>
+                        </div>
+                    </div>
+                    <div id="mainViolinDiv">
+                        <svg id="mainViolin" height="1000px" width="800px"></svg>
+                    </div>
+                    <div id="secondViolinDiv">
+                        <svg id="secondViolin" height="1000px" width="800px"></svg>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Pie</h2>
+                    <p style="text-align: center; font-weight: bold;">Percentage Missing Data across utilities For Location <span id="pieLocation">  </span></p>
+                    <span id="pieChartInstruct" style="text-align: center; font-style: italic;">(Select a location on Violin Chart to display missing data)</span>
+                    <svg id="pieChart" width="500" height="500"></svg>
+                    <div id="tooltip-pie" class="tooltip-pie">
+                        <strong id="tooltip-title-pie"></strong> <br>
+                        <strong id="tooltip-x-pie"></strong> <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-3">
+                <div class="card-stream">
+                    <h2>Streamgraph</h2>
+                    <span id="StreamInstruct" style="text-align: center; font-style: italic; display:block">(Select a Location on Choropleth map to display this chart)</span>
+                    <svg id = "streamgraph"></svg>
+                    <div id="streamTooltip" class="tooltip">
+                        <strong id="tooltip-title"></strong> <br>
+                        <strong id="tooltip-x"></strong> <br>
+                    </div>
+                </div>
+                <div class="card-innovative">
+                    <h2>Bubble-o-Slopegraph</h2>
+                    <p id = "InnovativeHeading" style="text-align: center; font-weight: bold;"></p>
+                    <span id="InnovativeInstruct" style="text-align: center; font-style: italic; display:block">(Select a Utility on Streamgraph to display this chart)</span>
+                    <svg id="innovative"></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
