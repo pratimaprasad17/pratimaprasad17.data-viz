@@ -1,0 +1,62 @@
+Name,Distance,Stellar Magnitude,Planet type,Discovery year,Mass multiplier,Mass wrt,Radius multiplier,Radius wrt,Orbital radius,Orbital period,Eccentricity,Detection method
+11 Comae Berenices b,304,4.72307,Gas Giant,2007,19.4,Jupiter,1.08,Jupiter,1.29,0.8925394,0.23,Radial Velocity
+11 Ursae Minoris b,409,5.013,Gas Giant,2009,14.74,Jupiter,1.09,Jupiter,1.53,1.4,0.08,Radial Velocity
+14 Andromedae b,246,5.23133,Gas Giant,2008,4.8,Jupiter,1.15,Jupiter,0.83,0.5086927,0,Radial Velocity
+2MASS J19383260+4603591 b,1293,12.651,Gas Giant,2015,1.9,Jupiter,1.2,Jupiter,0.92,1.1115674,0.33,Eclipse Timing Variations
+AU Microscopii b,32,8.81,Neptune-like,2020,20.12,Earth,0.363,Jupiter,0.0645,0.023271732,0.19,Transit
+AU Microscopii c,32,8.81,Neptune-like,2021,9.6,Earth,0.289,Jupiter,0.1101,0.051745377,0.04,Transit
+BD+60 1417 b,147,9.374,Gas Giant,2021,15,Jupiter,1.31,Jupiter,1662,67794.6,0,Direct Imaging
+Beta Pictoris b,64,3.85,Gas Giant,2008,11.73313,Jupiter,1.65,Jupiter,10.019926,23.6,0.11,Direct Imaging
+CoRoT-7 b,522,11.728,Super Earth,2009,4.07661,Earth,1.681,Earth,0.017016,0.002464066,0,Transit
+CT Chamaleontis b,622,12.335,Gas Giant,2007,17,Jupiter,2.2,Jupiter,440,0.99931556,0,Direct Imaging
+DE Canum Venaticorum b,100,12.956,Gas Giant,2018,12.0293,Jupiter,1.1,Jupiter,5.75,11.2,0,Eclipse Timing Variations
+DH Tauri b,440,13.98,Gas Giant,2004,11,Jupiter,2.7,Jupiter,330,10441.5,0,Direct Imaging
+DP Leonis b,997,18.6837,Gas Giant,2009,6.28,Jupiter,1.14,Jupiter,8.19,28,0.39,Eclipse Timing Variations
+GJ 504 b,57,5.18799,Gas Giant,2013,4,Jupiter,1.16,Jupiter,43.5,259.9,0,Direct Imaging
+GJ 896 A b,20,10.05,Gas Giant,2022,2.26,Jupiter,1.19,Jupiter,0.63965,0.77864474,0.35,Astrometry
+HD 95086 b,281,7.36,Gas Giant,2013,5,Jupiter,1.15,Jupiter,55.7,328.8,0,Direct Imaging
+HD 97048 b,600,8.44,Gas Giant,2019,2.5,Jupiter,1.18,Jupiter,130,957.3,0,Disk Kinematics
+HU Aquarii AB b,627,16.183,Gas Giant,2011,5.9,Jupiter,1.14,Jupiter,3.6,6.5,0,Eclipse Timing Variations
+HU Aquarii AB c,627,16.183,Gas Giant,2011,4.5,Jupiter,1.15,Jupiter,5.4,12,0.51,Eclipse Timing Variations
+Kepler-122 f,3352,14.403,Super Earth,2014,36,Earth,1.75,Earth,0.287,0.154141,0,Transit Timing Variations
+Kepler-138 e,218,13.04,Terrestrial,2022,0.43,Earth,0.797,Earth,0.1803,0.1045859,0.11,Transit Timing Variations
+Kepler-338 e,1803,12.19,Super Earth,2014,8.5,Earth,1.56,Earth,0.0893,0.025462013,0.05,Transit Timing Variations
+Kepler-37 e,209,9.770001,Terrestrial,2014,0.0275,Earth,0.37,Earth,0.246,0.14017797,0,Transit Timing Variations
+Kepler-411 e,501,12.448,Neptune-like,2018,10.8,Earth,0.293,Jupiter,0.186,0.0862423,0.02,Transit Timing Variations
+Kepler-414 b,1349,13.378,Super Earth,2014,3.5,Earth,1.71,Earth,0.0527,0.012867898,0,Transit Timing Variations
+Kepler-414 c,1349,13.378,Neptune-like,2014,29.9,Earth,0.269,Jupiter,0.0699,0.019712524,0,Transit Timing Variations
+Kepler-415 b,1730,16.142,Super Earth,2014,0.377,Jupiter,1.21,Earth,0.0426,0.011498973,0,Transit Timing Variations
+Kepler-415 c,1730,16.142,Super Earth,2014,4.7,Earth,0.201,Jupiter,0.0695,0.023819301,0,Transit Timing Variations
+Kepler-416 b,2253,14.166,Super Earth,2014,0.183,Jupiter,0.221,Jupiter,0.0658,0.017248461,0,Transit Timing Variations
+Kepler-416 c,2253,14.166,Neptune-like,2014,6.57,Earth,0.219,Jupiter,0.1021,0.03340178,0,Transit Timing Variations
+Kepler-417 b,3177,15.864,Super Earth,2014,11,Earth,0.206,Jupiter,0.1006,0.033675566,0,Transit Timing Variations
+Kepler-417 c,3177,15.864,Neptune-like,2014,7.7,Earth,0.24,Jupiter,0.1194,0.043531828,0,Transit Timing Variations
+Kepler-419 c,3299,13.089,Gas Giant,2014,7.3,Jupiter,1.13,Jupiter,1.68,1.9,0.18,Transit Timing Variations
+Kepler-448 c,1303,11.51,Gas Giant,2017,22,Jupiter,1.07,Jupiter,4.2,6.8,0.65,Transit Timing Variations
+Kepler-46 c,2535,15.312,Gas Giant,2012,0.376,Jupiter,1.21,Jupiter,0.2799,0.15605749,0.01,Transit Timing Variations
+Kepler-539 c,1002,12.444,Gas Giant,2016,2.4,Jupiter,1.18,Jupiter,2.42,2.7,0.5,Transit Timing Variations
+Kepler-76 b,2684,13.474,Gas Giant,2013,2.01,Jupiter,1.36,Jupiter,0.0274,0.004106776,0,Orbital Brightness Modulation
+Kepler-82 f,2950,15.131,Neptune-like,2019,20.9,Earth,0.432,Jupiter,0.3395,0.20725529,0,Transit Timing Variations
+KIC 5095269 b,3877,13.595,Gas Giant,2017,7.693,Jupiter,1.13,Jupiter,0.8,0.6507871,0.06,Eclipse Timing Variations
+KOI-55 b,4016,15.154,Terrestrial,2011,0.44,Earth,0.759,Earth,0.006,0.00054757,0,Orbital Brightness Modulation
+KOI-55 c,4016,15.154,Terrestrial,2011,0.655,Earth,0.867,Earth,0.0076,0.000821355,0,Orbital Brightness Modulation
+KOI-984 c,824,12.795,Gas Giant,2022,0.6601,Jupiter,1.25,Jupiter,0.1467,0.058863793,0.38,Transit Timing Variations
+MOA-2010-BLG-117L b,11417,24.3,Gas Giant,2018,0.54,Jupiter,1.27,Jupiter,2.42,4.9,0,Gravitational Microlensing
+MOA-bin-29 b,23225,44.61,Gas Giant,2019,0.6,Jupiter,1.26,Jupiter,0.48,1.9,0,Gravitational Microlensing
+NN Serpentis c,1683,16.943,Gas Giant,2010,7.33,Jupiter,1.13,Jupiter,5.35,15.3,0.08,Eclipse Timing Variations
+OGLE-2005-BLG-169L b,13374,22.783,Neptune-like,2006,14.1,Earth,0.343,Jupiter,3.5,7.9,0,Gravitational Microlensing
+OGLE-2007-BLG-349L AB c,9003,24.73,Gas Giant,2016,0.25171,Jupiter,0.952,Jupiter,2.59,7,0,Gravitational Microlensing
+OGLE-2007-BLG-368L b,19246,17.71,Neptune-like,2009,20,Earth,0.421,Jupiter,2.8,5.9,0,Gravitational Microlensing
+OGLE-2012-BLG-0026L b,13110,20.66,Gas Giant,2012,0.145,Jupiter,0.688,Jupiter,4,7.8,0,Gravitational Microlensing
+OGLE-2018-BLG-1185L b,24139,29.3,Neptune-like,2021,8.4,Earth,0.253,Jupiter,1.54,3.1,0,Gravitational Microlensing
+PSR B0329+54 b,1647,20.8671,Super Earth,2017,1.97,Earth,1.22,Earth,10.26,27.8,0.24,Pulsar Timing
+TCP J05074264+2447555 b,1647,14.243,Neptune-like,2018,20,Earth,0.421,Jupiter,0.94,1.1863108,0,Gravitational Microlensing
+TOI-2202 c,770,13.004,Gas Giant,2021,0.369,Jupiter,1.19,Jupiter,0.15544,0.06762492,0.06,Transit Timing Variations
+V0391 Pegasi b,3901,14.769,Gas Giant,2007,3.2,Jupiter,1.17,Jupiter,1.7,3.2,0,Pulsation Timing Variations
+WASP-18 c,403,9.28,Gas Giant,2019,0.17368,Jupiter,0.765,Jupiter,0.035,0.006023272,0.015,Transit Timing Variations
+WASP-47 d,864,11.936,Neptune-like,2015,14.2,Earth,0.318,Jupiter,0.085,0.024640657,0.01,Transit
+Wolf 1061 d,14,10.1,Neptune-like,2015,7.7,Earth,0.24,Jupiter,0.47,0.5946612,0.55,Radial Velocity
+Wolf 503 b,145,10.27,Neptune-like,2018,6.26,Earth,2.043,Earth,0.05706,0.016427105,0.41,Transit
+YZ Ceti b,12,12.074,Terrestrial,2017,0.7,Earth,0.913,Earth,0.01634,0.005475702,0.06,Radial Velocity
+YZ Ceti c,12,12.074,Super Earth,2017,1.14,Earth,1.05,Earth,0.02156,0.008487337,0,Radial Velocity
+YZ Ceti d,12,12.074,Super Earth,2017,1.09,Earth,1.03,Earth,0.02851,0.012867898,0.07,Radial Velocity

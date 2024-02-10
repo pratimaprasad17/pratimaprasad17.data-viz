@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Homework #4: Innovative Visualization Design - CSE 578 - Fall 2023</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="style.css"/>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Homework #4: Innovative Visualization Design</h1>
+            <h3 class="text-center">Pratima Prasad - pprasa11@asu.edu</h3>
+        </div>
+        <div class="label-container">
+            <label class="filterLabel" id="filterLabel" for="filterDropdown">Detection Method selector :</label>
+            <select id="filterDropdown"></select>
+        </div>
+        <div class="chart-container">
+            <svg id="scatterplot" width="100%" height="850px"></svg>
+            <svg id="histogram" width="100%" height="850px"></svg>
+            <div id="tooltip"></div>
+        </div>
+    </body>
+</html>

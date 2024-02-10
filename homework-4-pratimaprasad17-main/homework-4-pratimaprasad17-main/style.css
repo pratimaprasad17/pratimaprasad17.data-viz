@@ -1,0 +1,16 @@
+.chart-container {
+    position: relative;
+    width: 1500px; /* Adjust as needed */
+    height: 600px; /* Adjust as needed */
+}
+#scatterplot, #histogram {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#scatterplot {
+    z-index: 1; /* Ensures scatterplot is above the histogram */
+}
+#histogram {
+    z-index: 0; /* Ensures histogram is below the scatterplot */
+}
